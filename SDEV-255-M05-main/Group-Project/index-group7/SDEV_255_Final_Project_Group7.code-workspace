@@ -1,0 +1,42 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../M07-Login-Draft"
+		}
+	],
+	"settings": {
+		"workbench.cloudChanges.autoResume": "off",
+		"workbench.cloudChanges.continueOn": "off",
+		"workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+		"workbench.list.openMode": "doubleClick",
+		"workbench.colorTheme": "Aura Soft Dark (Soft Text)",
+		"workbench.editor.decorations.colors": false,
+		"workbench.tips.enabled": false,
+		"workbench.tree.expandMode": "doubleClick",
+		"workbench.tree.indent": 4,
+		"workbench.tree.renderIndentGuides": "none",
+		"breadcrumbs.enabled": false,
+		"workbench.editor.autoLockGroups": {
+			"terminalEditor": false,
+			"mainThreadWebview-simpleBrowser.view": false,
+			"mainThreadWebview-browserPreview": false
+		},
+		"workbench.editor.mouseBackForwardToNavigate": false,
+		"workbench.reduceMotion": "on",
+		"explorer.compactFolders": false,
+		"breadcrumbs.icons": false,
+		"workbench.editor.decorations.badges": false,
+		"explorer.decorations.colors": false,
+		"explorer.decorations.badges": false,
+		"search.decorations.colors": false,
+		"search.decorations.badges": false,
+		"merge-conflict.decorators.enabled": false,
+		"problems.decorations.enabled": false,
+		"git.decorations.enabled": false,
+		"debug.showInlineBreakpointCandidates": false,
+		"liveServer.settings.multiRootWorkspaceName": "M07-Login-Draft"
+	}
+}

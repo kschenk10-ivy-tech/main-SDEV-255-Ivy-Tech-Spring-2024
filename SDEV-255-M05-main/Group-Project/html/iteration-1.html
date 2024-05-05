@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course and Teacher Management</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+button.edit, button.delete {
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+  </style>
+    <h1>Course Management</h1>
+    <h2>Add New Course</h2>
+    <form id="course-form">
+        <input type="text" id="course-name" placeholder="Course Name" required>
+        <button type="submit">Add Course</button>
+    </form>
+    <ul id="course-list"></ul>
+
+    <h1>Teacher Management</h1>
+    <h2>Add New Teacher</h2>
+    <form id="teacher-form">
+        <input type="text" id="teacher-name" placeholder="Teacher Name" required>
+        <button type="submit">Add Teacher</button>
+    </form>
+    <ul id="teacher-list"></ul>
+
+    <script src="script.js"></script>
+  <script>document.getElementById('course-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const courseName = document.getElementById('course-name').value;
+    addListItem('course-list', courseName);
+    document.getElementById('course-name').value = '';
+});
+
+document.getElementById('teacher-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const teacherName = document.getElementById('teacher-name').value;
+    addListItem('teacher-list', teacherName);
+    document.getElementById('teacher-name').value = '';
+});
+
+function addListItem(listId, name) {
+    const list = document.getElementById(listId);
+    const li = document.createElement('li');
+    li.textContent = name;
+
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.className = 'edit';
+    editButton.onclick = function() {
+        const newName = prompt('Edit Name:', name);
+        if (newName) {
+            li.firstChild.textContent = newName;
+        }
+    };
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'delete';
+    deleteButton.onclick = function() {
+        list.removeChild(li);
+    };
+
+    li.appendChild(editButton);
+    li.appendChild(deleteButton);
+    list.appendChild(li);
+}
+</script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

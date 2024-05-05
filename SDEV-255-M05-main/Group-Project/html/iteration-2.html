@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Course Management System</title>
+<!--  <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 20px;
+ padding: 0;
+ background-color: #f4f4f4;
+}
+
+h1,
+h2 {
+ color: #333;
+}
+
+form {
+ margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+ padding: 8px;
+ margin-right: 10px;
+ margin-bottom: 10px;
+ width: 200px;
+ display: block;
+}
+
+button {
+ padding: 10px 15px;
+ cursor: pointer;
+}
+
+ul {
+ list-style-type: none;
+ padding: 0;
+}
+
+li {
+ background-color: #fff;
+ padding: 10px;
+ margin-top: 5px;
+ cursor: pointer;
+ border-radius: 5px;
+}
+
+#add-course-section,
+#courses-section,
+#course-details-section {
+ display: none;
+}
+
+.visible {
+ display: block;
+}
+ </style>
+ <div id="add-course-section">
+  <h2>Add New Course</h2>
+  <form id="course-form">
+   <input type="text" id="course-name" placeholder="Course Name" required>
+   <textarea id="course-description" placeholder="Description" required></textarea>
+   <input type="text" id="course-subject" placeholder="Subject Area" required>
+   <input type="number" id="course-credits" placeholder="Number of Credits" required min="1">
+   <button type="submit">Add Course</button>
+  </form>
+ </div>
+
+ <div id="courses-section" style="display:none;">
+  <h2>All Courses</h2>
+  <ul id="course-list"></ul>
+ </div>
+
+ <div id="course-details-section" style="display:none;">
+  <h2>Course Details</h2>
+  <p id="detail-name"></p>
+  <p id="detail-description"></p>
+  <p id="detail-subject"></p>
+  <p id="detail-credits"></p>
+  <button onclick="showSection('courses')">Back to Courses</button>
+ </div>
+
+ <script src="script.js"></script>
+ <script>let courses = [];
+
+document.getElementById("course-form").addEventListener("submit", function (e) {
+ e.preventDefault();
+ const name = document.getElementById("course-name").value;
+ const description = document.getElementById("course-description").value;
+ const subject = document.getElementById("course-subject").value;
+ const credits = parseInt(document.getElementById("course-credits").value);
+
+ const course = { name, description, subject, credits };
+ courses.push(course);
+ addListItem(course);
+ document.getElementById("course-form").reset();
+ showSection("courses");
+});
+
+function addListItem(course) {
+ const list = document.getElementById("course-list");
+ const li = document.createElement("li");
+ li.textContent = course.name;
+ li.onclick = function () {
+  showCourseDetails(course);
+ };
+ list.appendChild(li);
+}
+
+function showCourseDetails(course) {
+ document.getElementById("detail-name").textContent = `Name: ${course.name}`;
+ document.getElementById(
+  "detail-description"
+ ).textContent = `Description: ${course.description}`;
+ document.getElementById(
+  "detail-subject"
+ ).textContent = `Subject: ${course.subject}`;
+ document.getElementById(
+  "detail-credits"
+ ).textContent = `Credits: ${course.credits}`;
+ showSection("course-details");
+}
+
+function showSection(section) {
+ document.getElementById("add-course-section").style.display = "none";
+ document.getElementById("courses-section").style.display = "none";
+ document.getElementById("course-details-section").style.display = "none";
+
+ document.getElementById(`${section}-section`).style.display = "block";
+}
+
+// Initially load the add course section
+showSection("add-course");
+</script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
